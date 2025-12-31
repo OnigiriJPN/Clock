@@ -1,0 +1,36 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title> 時計 -- WebClock </title>
+  </head>
+  <body>
+    <p> 時刻: <b class="isClock">  </b> </p>
+    <br> <p> 日付: <b class="isDate">  </b> </p>
+    <noscript>
+      <strong> JavaScriptが有効になっておりません。 </strong>
+    </noscript>
+    <script>
+      const event = new Date();
+      const isClock = document.querySelector(".isClock");
+      const isDate = document.querySelector(".isDate");
+      isDate.textContent = event.toLocaleDateString();
+      function updateClock() {
+    // 現在の日付と時刻を取得
+    const now = new Date(); 
+    // toLocaleTimeString()で、言語環境に応じた時刻の文字列を取得
+    const timeString = now.toLocaleTimeString(); 
+
+    // HTML要素を取得し、時刻で内容を更新
+    if (isClock) {
+        isClock.textContent = timeString;
+    }
+}
+
+// 1000ミリ秒（1秒）ごとに updateClock 関数を繰り返し実行
+setInterval(updateClock, 1000);
+
+// 注: 繰り返し処理を停止したい場合は、clearInterval(intervalId); を使用します。
+
+    </script>
+  </body>
+</html>
